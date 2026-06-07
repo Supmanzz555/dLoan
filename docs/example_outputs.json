@@ -1,0 +1,63 @@
+{
+  "APP001": {
+    "applicant_id": "APP001",
+    "recommendation": "Proceed",
+    "confidence": "high",
+    "eligibility_status": "Eligible",
+    "debt_to_income_ratio": "34.29%",
+    "risk_flags": [],
+    "missing_documents": [],
+    "explanation": "The applicant, Somchai, is eligible for the loan with a low risk level. The debt-to-income ratio is 34.29%, which is within the acceptable range. All required fields and documents are present, and the applicant meets the eligibility criteria.\n\nRequires human review: This screening is AI-generated and must be verified by a credit officer before any decision.",
+    "next_action": "Proceed to manual review by credit officer"
+  },
+  "APP003": {
+    "applicant_id": "APP003",
+    "recommendation": "Need More Info",
+    "confidence": "High",
+    "eligibility_status": "Incomplete application",
+    "debt_to_income_ratio": null,
+    "risk_flags": [],
+    "missing_documents": [
+      "salary_slip"
+    ],
+    "explanation": "Application is incomplete. Required information or documents are missing.",
+    "next_action": "Contact applicant to provide missing information."
+  },
+  "APP005": {
+    "applicant_id": "APP005",
+    "recommendation": "Reject / Not Eligible",
+    "confidence": "high",
+    "eligibility_status": "Income below minimum threshold",
+    "debt_to_income_ratio": "33.33%",
+    "risk_flags": [],
+    "missing_documents": [],
+    "explanation": "The applicant, Malee, is not eligible for the loan due to a monthly income of 15,000 THB, which is below the minimum threshold of 20,000 THB. All documents are present, but the hard income rule is not satisfied.\n\nRequires human review: This screening is AI-generated and must be verified by a credit officer before any decision.",
+    "next_action": "Notify applicant that minimum income requirement is not met"
+  },
+  "APP007": {
+    "applicant_id": "APP007",
+    "recommendation": "High Risk Review",
+    "confidence": "high",
+    "eligibility_status": "Eligible",
+    "debt_to_income_ratio": "70%",
+    "risk_flags": [
+      "Debt-to-income ratio ABOVE 60%"
+    ],
+    "missing_documents": [],
+    "explanation": "The applicant, Thana, passes all hard eligibility rules (age 38, income 50,000 THB, employee) but has a high debt-to-income ratio of 70%. Credit history is normal. The elevated DTI warrants careful manual review by a senior credit officer.\n\nRequires human review: This screening is AI-generated and must be verified by a credit officer before any decision.",
+    "next_action": "Assign to senior credit officer for manual review"
+  },
+  "APP008": {
+    "applicant_id": "APP008",
+    "recommendation": "High Risk Review",
+    "confidence": "high",
+    "eligibility_status": "Passes all rules",
+    "debt_to_income_ratio": "50%",
+    "risk_flags": [
+      "Credit history shows severe default"
+    ],
+    "missing_documents": [],
+    "explanation": "The applicant, Pichai, passes all hard eligibility rules (age 30, income 40,000 THB, employee, DTI 50%). However, a recent severe default on credit history is a significant risk signal requiring careful manual review by a senior credit officer.\n\nRequires human review: This screening is AI-generated and must be verified by a credit officer before any decision.",
+    "next_action": "Assign to senior credit officer for manual review of credit history issues"
+  }
+}
