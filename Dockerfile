@@ -8,5 +8,4 @@ RUN uv sync --no-dev --frozen
 
 COPY . .
 
-ENV PATH="/app/.venv/bin:$PATH"
-CMD ["uvicorn", "api.routes:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "api.routes:app", "--host", "0.0.0.0", "--port", "8000"]
