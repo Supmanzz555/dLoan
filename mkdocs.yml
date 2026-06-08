@@ -1,0 +1,54 @@
+site_name: dLoan
+site_description: Agentic Gen AI Loan Applicant Screening System
+site_url: https://supmanzz555.github.io/dLoan/
+repo_url: https://github.com/Supmanzz555/dLoan
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+nav:
+  - Home: index.md
+  - 1. Business Understanding: 01-business-understanding.md
+  - 2. Data Design: 02-data-design.md
+  - 3. Agent Architecture: 03-agent-architecture.md
+  - 4. Prototype Build: 04-prototype-build.md
+  - 5. GenAI Output: 05-genai-output.md
+  - 6. Evaluation & Compliance: 06-evaluation-compliance.md
+  - 7. Demo & Presentation: 07-demo.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Supmanzz555/dLoan
+
+copyright: Copyright &copy; 2026 dLoan Team

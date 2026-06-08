@@ -4,6 +4,8 @@ An AI-assisted loan screening system with 6 LangGraph agents that helps credit o
 
 **Tech stack:** Python 3.12 + uv | FastAPI | Streamlit | LangGraph | Groq/OpenAI | Pydantic | SQLite
 
+[![Docs](https://img.shields.io/badge/docs-mkdocs-blue?style=flat-square)](https://supmanzz555.github.io/dLoan/)
+
 ---
 
 ## Pipeline
@@ -115,7 +117,7 @@ dLoan/
 ├── data/            20 sample applicants with expected outcomes
 ├── utils/           rules.py (deterministic eligibility) + audit.py (SQLite)
 ├── models/          Pydantic schemas (ApplicantInput, ScreeningResult)
-├── docs/            Business problem, architecture, evaluation, safety, limitations, demo script
+├── docs/            Documentation (MkDocs site: https://supmanzz555.github.io/dLoan/)
 └── tests/           Integration test (FastAPI TestClient, real LLM)
 ```
 
