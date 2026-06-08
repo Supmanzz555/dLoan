@@ -1,30 +1,46 @@
 # Demo & Presentation
 
-dLoan is a 6-agent AI system that screens loan applicants and recommends one of 4 outcomes: Proceed, Need More Info, Reject, or High Risk Review. The final decision always rests with a human credit officer.
+A 6-agent AI pipeline that screens loan applicants and produces structured recommendations — always leaving the final decision to a human credit officer.
 
 ## Demo Videos
 
 - **English response:** [Watch on YouTube](https://youtu.be/G-pGU5vu2z0)
 - **Thai response:** [Watch on YouTube](https://youtu.be/PRxpDzR5PCU)
 
-Both videos show the complete workflow — submitting an applicant, running the agent pipeline, and reviewing the structured output.
+## Results at a Glance
 
-## Quick Walkthrough
+| Outcome | Example | What Happens |
+|---------|---------|-------------|
+| Proceed | APP001 — income 35K, DTI 34%, all docs | Cleared for manual review |
+| Need More Info | APP003 — missing salary_slip | Pipeline stops, requests document |
+| Reject / Not Eligible | APP005 — income 15K (below 20K minimum) | Hard rule violation |
+| High Risk Review | APP007 — DTI 70% (above 60% threshold) | Flagged for senior officer |
 
-1. **Input** — Enter applicant data via Streamlit form or REST API
-2. **Screen** — 6 agents run sequentially: Intake → Document → Eligibility → Risk → Recommendation → Explanation
-3. **Output** — Structured result with recommendation, risk flags, DTI ratio, and human-readable explanation
-4. **Review** — Credit officer reviews the AI output and makes the final decision
+## What the System Produces
 
-### Edge Cases Covered
+Every screening returns 9 structured fields:
 
-- Missing documents → short-circuit at Document agent
-- Low income / age out of range → hard rule reject
-- High DTI / bad credit → flagged for senior officer review
-- Self-employed / business owner → accepted with stable income
+```
+recommendation:      "Proceed"
+confidence:          "High"
+eligibility_status:  "Eligible"
+debt_to_income_ratio: "34.29%"
+risk_flags:          []
+missing_documents:   []
+explanation:         "...Requires human review..."
+next_action:         "Proceed to manual review by credit officer"
+```
 
 ## Demo GIFs
 
 | Run with Docker | Run with script |
 |----------------|-----------------|
 | ![Docker](img/demo_Docker.gif) | ![Script](img/demo_noDocker.gif) |
+
+## Coverage
+
+- 20 test applicants across all scenarios
+- 100% pass rate (expected vs actual)
+- Supports both English and Thai responses
+- REST API + Streamlit UI
+- Docker-ready
