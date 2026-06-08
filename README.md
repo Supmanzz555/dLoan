@@ -26,6 +26,14 @@ Short-circuit: if intake finds missing fields or document finds missing document
 
 ---
 
+## Demo
+
+| Run with Docker | Run with script |
+|----------------|-----------------|
+| ![Docker](Gif/demo_Docker.gif) | ![Script](Gif/demo_noDocker.gif) |
+
+---
+
 ## Quick Start
 
 ### 1. Prerequisites
