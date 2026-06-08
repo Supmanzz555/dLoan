@@ -520,55 +520,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#demo-scenarios" class="md-nav__link">
+  <a href="#quick-walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Demo Scenarios
+        Quick Walkthrough
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-highlights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture Highlights
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Architecture Highlights">
+    <nav class="md-nav" aria-label="Quick Walkthrough">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#6-agents" class="md-nav__link">
+  <a href="#edge-cases-covered" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6 Agents
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-by-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Safety by Design
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pipeline-short-circuit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pipeline Short-Circuit
+        Edge Cases Covered
       
     </span>
   </a>
@@ -577,17 +544,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Test Results
-      
-    </span>
-  </a>
   
 </li>
       
@@ -648,55 +604,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#demo-scenarios" class="md-nav__link">
+  <a href="#quick-walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Demo Scenarios
+        Quick Walkthrough
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-highlights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture Highlights
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Architecture Highlights">
+    <nav class="md-nav" aria-label="Quick Walkthrough">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#6-agents" class="md-nav__link">
+  <a href="#edge-cases-covered" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6 Agents
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-by-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Safety by Design
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pipeline-short-circuit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pipeline Short-Circuit
+        Edge Cases Covered
       
     </span>
   </a>
@@ -705,17 +628,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Test Results
-      
-    </span>
-  </a>
   
 </li>
       
@@ -751,131 +663,27 @@
 
 
 <h1 id="demo-presentation">Demo &amp; Presentation</h1>
+<p>dLoan is a 6-agent AI system that screens loan applicants and recommends one of 4 outcomes: Proceed, Need More Info, Reject, or High Risk Review. The final decision always rests with a human credit officer.</p>
 <h2 id="demo-videos">Demo Videos</h2>
 <ul>
 <li><strong>English response:</strong> <a href="https://youtu.be/G-pGU5vu2z0">Watch on YouTube</a></li>
 <li><strong>Thai response:</strong> <a href="https://youtu.be/PRxpDzR5PCU">Watch on YouTube</a></li>
 </ul>
-<h2 id="demo-scenarios">Demo Scenarios</h2>
-<table>
-<thead>
-<tr>
-<th>Scenario</th>
-<th>Applicant</th>
-<th>Outcome</th>
-<th>Key Takeaway</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Happy path</td>
-<td>APP001 (Somchai)</td>
-<td>Proceed</td>
-<td>Clean applicant → instant proceed with all fields, docs, rules passing</td>
-</tr>
-<tr>
-<td>Missing document</td>
-<td>APP003 (Nattapong)</td>
-<td>Need More Info</td>
-<td>Pipeline short-circuits at Document Agent, no wasted LLM calls</td>
-</tr>
-<tr>
-<td>Low income</td>
-<td>APP005 (Malee)</td>
-<td>Reject / Not Eligible</td>
-<td>Hard rules enforced regardless of other factors</td>
-</tr>
-<tr>
-<td>High DTI</td>
-<td>APP007 (Thana)</td>
-<td>High Risk Review</td>
-<td>Borderline cases flagged for human judgment, not auto-rejected</td>
-</tr>
-<tr>
-<td>Bad credit</td>
-<td>APP008 (Pichai)</td>
-<td>High Risk Review</td>
-<td>Credit history risk flagged for senior officer review</td>
-</tr>
-<tr>
-<td>Self-employed</td>
-<td>APP009 (Chalerm)</td>
-<td>Proceed</td>
-<td>Non-employee types accepted with stable income</td>
-</tr>
-<tr>
-<td>Extreme DTI</td>
-<td>APP016 (Thawatchai)</td>
-<td>High Risk Review</td>
-<td>160% DTI correctly flagged</td>
-</tr>
-<tr>
-<td>Unemployed + no income</td>
-<td>APP017 (Kwan)</td>
-<td>Reject / Not Eligible</td>
-<td>Multiple hard rule failures → reject</td>
-</tr>
-<tr>
-<td>Extreme loan amount</td>
-<td>APP019 (Preecha)</td>
-<td>High Risk Review</td>
-<td>5M loan on 40K income flagged for review</td>
-</tr>
-<tr>
-<td>API test</td>
-<td>curl request</td>
-<td>Proceed</td>
-<td>REST API returns structured JSON, integrable with any system</td>
-</tr>
-</tbody>
-</table>
-<h2 id="architecture-highlights">Architecture Highlights</h2>
-<h3 id="6-agents">6 Agents</h3>
-<table>
-<thead>
-<tr>
-<th>Agent</th>
-<th>Responsibility</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Intake</strong></td>
-<td>Check 9 fields are present</td>
-</tr>
-<tr>
-<td><strong>Document</strong></td>
-<td>Verify id_card, salary_slip, bank_statement</td>
-</tr>
-<tr>
-<td><strong>Eligibility</strong></td>
-<td>Apply hard rules (age 21-60, income ≥20K, employment type)</td>
-</tr>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Detect risk signals (high DTI, bad credit, borderline income)</td>
-</tr>
-<tr>
-<td><strong>Recommendation</strong></td>
-<td>Classify into 1 of 4 outcomes</td>
-</tr>
-<tr>
-<td><strong>Explanation</strong></td>
-<td>Generate human-readable explanation + next action</td>
-</tr>
-</tbody>
-</table>
-<h3 id="safety-by-design">Safety by Design</h3>
+<p>Both videos show the complete workflow — submitting an applicant, running the agent pipeline, and reviewing the structured output.</p>
+<h2 id="quick-walkthrough">Quick Walkthrough</h2>
+<ol>
+<li><strong>Input</strong> — Enter applicant data via Streamlit form or REST API</li>
+<li><strong>Screen</strong> — 6 agents run sequentially: Intake → Document → Eligibility → Risk → Recommendation → Explanation</li>
+<li><strong>Output</strong> — Structured result with recommendation, risk flags, DTI ratio, and human-readable explanation</li>
+<li><strong>Review</strong> — Credit officer reviews the AI output and makes the final decision</li>
+</ol>
+<h3 id="edge-cases-covered">Edge Cases Covered</h3>
 <ul>
-<li><strong>Post-LLM rule validation</strong> — Deterministic Python overrides LLM on hard facts</li>
-<li><strong>Human review disclaimer</strong> — Every output requires officer verification</li>
-<li><strong>No protected attributes</strong> — Schema excludes gender, religion, race, etc.</li>
+<li>Missing documents → short-circuit at Document agent</li>
+<li>Low income / age out of range → hard rule reject</li>
+<li>High DTI / bad credit → flagged for senior officer review</li>
+<li>Self-employed / business owner → accepted with stable income</li>
 </ul>
-<h3 id="pipeline-short-circuit">Pipeline Short-Circuit</h3>
-<p>Pipeline stops at Intake or Document agent if data is missing → returns "Need More Info" immediately. Saves up to 4 LLM calls per incomplete application.</p>
-<h2 id="test-results">Test Results</h2>
-<p>20/20 applicants pass integration tests against real Groq LLM. All core requirements covered.</p>
-<hr />
 <h2 id="demo-gifs">Demo GIFs</h2>
 <table>
 <thead>
