@@ -19,8 +19,13 @@
 | APP013 | Invalid employment (unemployed) | Reject / Not Eligible | Reject / Not Eligible | ✅ Pass |
 | APP014 | DTI at threshold (60%), meets criteria | Proceed | Proceed | ✅ Pass |
 | APP015 | Default record + high DTI (62.8%) | High Risk Review | High Risk Review | ✅ Pass |
+| APP016 | Extreme DTI 160%, income just at threshold | High Risk Review | High Risk Review | ✅ Pass |
+| APP017 | Unemployed, low income, bad credit, no docs | Reject / Not Eligible | Reject / Not Eligible | ✅ Pass |
+| APP018 | Age 80, otherwise excellent profile | Reject / Not Eligible | Reject / Not Eligible | ✅ Pass |
+| APP019 | 5M loan on 40K income — extreme loan-to-income | High Risk Review | High Risk Review | ✅ Pass |
+| APP020 | Zero income — DTI undefined | Reject / Not Eligible | Reject / Not Eligible | ✅ Pass |
 
-**Overall: 15/15 (100%)**
+**Overall: 20/20 (100%)**
 
 ---
 
