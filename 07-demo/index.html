@@ -520,30 +520,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-walkthrough" class="md-nav__link">
+  <a href="#results-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Walkthrough
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#edge-cases-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Edge Cases Covered
+        Results at a Glance
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-system-produces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the System Produces
+      
+    </span>
+  </a>
   
 </li>
       
@@ -552,6 +546,17 @@
     <span class="md-ellipsis">
       
         Demo GIFs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage
       
     </span>
   </a>
@@ -604,30 +609,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-walkthrough" class="md-nav__link">
+  <a href="#results-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Walkthrough
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#edge-cases-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Edge Cases Covered
+        Results at a Glance
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-system-produces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the System Produces
+      
+    </span>
+  </a>
   
 </li>
       
@@ -636,6 +635,17 @@
     <span class="md-ellipsis">
       
         Demo GIFs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage
       
     </span>
   </a>
@@ -663,27 +673,55 @@
 
 
 <h1 id="demo-presentation">Demo &amp; Presentation</h1>
-<p>dLoan is a 6-agent AI system that screens loan applicants and recommends one of 4 outcomes: Proceed, Need More Info, Reject, or High Risk Review. The final decision always rests with a human credit officer.</p>
+<p>A 6-agent AI pipeline that screens loan applicants and produces structured recommendations — always leaving the final decision to a human credit officer.</p>
 <h2 id="demo-videos">Demo Videos</h2>
 <ul>
 <li><strong>English response:</strong> <a href="https://youtu.be/G-pGU5vu2z0">Watch on YouTube</a></li>
 <li><strong>Thai response:</strong> <a href="https://youtu.be/PRxpDzR5PCU">Watch on YouTube</a></li>
 </ul>
-<p>Both videos show the complete workflow — submitting an applicant, running the agent pipeline, and reviewing the structured output.</p>
-<h2 id="quick-walkthrough">Quick Walkthrough</h2>
-<ol>
-<li><strong>Input</strong> — Enter applicant data via Streamlit form or REST API</li>
-<li><strong>Screen</strong> — 6 agents run sequentially: Intake → Document → Eligibility → Risk → Recommendation → Explanation</li>
-<li><strong>Output</strong> — Structured result with recommendation, risk flags, DTI ratio, and human-readable explanation</li>
-<li><strong>Review</strong> — Credit officer reviews the AI output and makes the final decision</li>
-</ol>
-<h3 id="edge-cases-covered">Edge Cases Covered</h3>
-<ul>
-<li>Missing documents → short-circuit at Document agent</li>
-<li>Low income / age out of range → hard rule reject</li>
-<li>High DTI / bad credit → flagged for senior officer review</li>
-<li>Self-employed / business owner → accepted with stable income</li>
-</ul>
+<h2 id="results-at-a-glance">Results at a Glance</h2>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Example</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proceed</td>
+<td>APP001 — income 35K, DTI 34%, all docs</td>
+<td>Cleared for manual review</td>
+</tr>
+<tr>
+<td>Need More Info</td>
+<td>APP003 — missing salary_slip</td>
+<td>Pipeline stops, requests document</td>
+</tr>
+<tr>
+<td>Reject / Not Eligible</td>
+<td>APP005 — income 15K (below 20K minimum)</td>
+<td>Hard rule violation</td>
+</tr>
+<tr>
+<td>High Risk Review</td>
+<td>APP007 — DTI 70% (above 60% threshold)</td>
+<td>Flagged for senior officer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-the-system-produces">What the System Produces</h2>
+<p>Every screening returns 9 structured fields:</p>
+<div class="highlight"><pre><span></span><code>recommendation:      &quot;Proceed&quot;
+confidence:          &quot;High&quot;
+eligibility_status:  &quot;Eligible&quot;
+debt_to_income_ratio: &quot;34.29%&quot;
+risk_flags:          []
+missing_documents:   []
+explanation:         &quot;...Requires human review...&quot;
+next_action:         &quot;Proceed to manual review by credit officer&quot;
+</code></pre></div>
 <h2 id="demo-gifs">Demo GIFs</h2>
 <table>
 <thead>
@@ -699,6 +737,14 @@
 </tr>
 </tbody>
 </table>
+<h2 id="coverage">Coverage</h2>
+<ul>
+<li>20 test applicants across all scenarios</li>
+<li>100% pass rate (expected vs actual)</li>
+<li>Supports both English and Thai responses</li>
+<li>REST API + Streamlit UI</li>
+<li>Docker-ready</li>
+</ul>
 
 
 
