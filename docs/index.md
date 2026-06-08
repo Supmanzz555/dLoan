@@ -36,6 +36,11 @@ Short-circuit: if intake finds missing fields or document finds missing document
 |----------------|-----------------|
 | ![Docker](img/demo_Docker.gif) | ![Script](img/demo_noDocker.gif) |
 
+### Demo Videos
+
+- **English response:** [Watch on YouTube](https://youtu.be/G-pGU5vu2z0)
+- **Thai response:** [Watch on YouTube](https://youtu.be/PRxpDzR5PCU)
+
 ## Technology Stack
 
 | Component | Technology |
