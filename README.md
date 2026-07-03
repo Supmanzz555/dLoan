@@ -37,29 +37,40 @@ Officer screens → AI completes → Officer submits feedback → status = pendi
 ### Setup
 
 ```bash
+git clone -b Django-version git@github.com:Supmanzz555/dLoan.git dLoan
 cd dLoan
-uv venv && uv sync
 cp .env.example .env
 # Edit .env — set GROQ_API_KEY
-
-cd frontend && npm install && cd ..
 ```
 
-### Run
+### Run (automated)
 
 ```bash
-# Both services in one terminal
 ./run.sh
-
-# Or separately:
-# Terminal 1 — Django on :8000
-uv run python manage.py runserver 0.0.0.0:8000
-
-# Terminal 2 — Vue on :5173
-cd frontend && npm run dev
 ```
 
-Open `http://localhost:5173`.
+This auto-installs deps, runs migrations, seeds data, creates default accounts, and starts both services.
+
+Open `http://localhost:5173`. Login with `admin1` / `admin`.
+
+### Run (manual)
+
+```bash
+# 1. Python deps
+uv venv && uv sync
+
+# 2. Frontend deps
+cd frontend && npm install && cd ..
+
+# 3. Create database tables
+PYTHONPATH=. uv run python manage.py migrate
+
+# 4. Seed 20 sample applicants
+PYTHONPATH=. uv run python manage.py seed_data
+
+# 5. Start both services
+./run.sh
+```
 
 ### Default Accounts
 

@@ -1,6 +1,6 @@
 # Exclude old project files
-api/
-ui/
+/api/
+/ui/
 utils/audit.py
 
 # Exclude generated / transient files
