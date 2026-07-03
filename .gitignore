@@ -1,20 +1,25 @@
+# Exclude old project files
+api/
+ui/
+utils/audit.py
+
+# Exclude generated / transient files
+db.sqlite3
 .venv/
-.env
 __pycache__/
 *.pyc
-.pytest_cache/
-*.egg-info/
-dist/
-screening_audit.db
-*.html
-*_files/
-nohup.out
-.DS_Store
-dloan.pdf
-dLoan.md
-PLAN.md
-ISSUES.md
-AGENTS.md
-info.md
-site/
-_legacy-docs-superseded/
+.env
+
+# Exclude documentation / plans
+plan/
+CHANGELOG.md
+Gif/
+docs/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/

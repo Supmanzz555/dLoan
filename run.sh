@@ -1,49 +1,28 @@
 #!/usr/bin/env bash
 set -e
 
-ROOT="$(cd "$(dirname "$0")" && pwd)"
-cd "$ROOT"
+ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-API_LOG="/tmp/dloan_api.log"
-UI_LOG="/tmp/dloan_ui.log"
+echo "=== Starting dLoan Fullstack ==="
 
-cleanup() {
-    echo ""
-    echo "Shutting down..."
-    kill $API_PID $UI_PID 2>/dev/null
-    wait $API_PID $UI_PID 2>/dev/null
-    echo "Done."
-}
-trap cleanup EXIT INT TERM
+# Start Django API
+echo "[django] Starting on port 8000..."
+cd "$ROOT_DIR"
+uv run python manage.py runserver 0.0.0.0:8000 &
+DJANGO_PID=$!
 
-echo "Starting API (port 8000)..."
-PYTHONPATH=. uv run uvicorn api.routes:app --reload --port 8000 --host 0.0.0.0 &>"$API_LOG" &
-API_PID=$!
-
-echo "Starting UI (port 8501)..."
-PYTHONPATH=. uv run streamlit run ui/app.py --server.port 8501 --server.headless true &>"$UI_LOG" &
-UI_PID=$!
-
-sleep 3
-
-if ! kill -0 $API_PID 2>/dev/null; then
-    echo "ERROR: API failed to start. Check $API_LOG"
-    cat "$API_LOG"
-    exit 1
-fi
-
-if ! kill -0 $UI_PID 2>/dev/null; then
-    echo "ERROR: UI failed to start. Check $UI_LOG"
-    cat "$UI_LOG"
-    exit 1
-fi
+# Start Vite frontend
+echo "[vite]   Starting on port 5173..."
+cd "$ROOT_DIR/frontend"
+npm run dev &
+VITE_PID=$!
 
 echo ""
-echo "Both services running:"
-echo "  API  → http://localhost:8000  (log: $API_LOG)"
-echo "  UI   → http://localhost:8501  (log: $UI_LOG)"
+echo "=== Services ==="
+echo "  API:  http://localhost:8000"
+echo "  UI:   http://localhost:5173"
 echo ""
-echo "Press Ctrl+C to stop both."
-echo ""
+echo "Press Ctrl+C to stop both services."
 
-tail -f "$API_LOG" "$UI_LOG"
+trap "kill $DJANGO_PID $VITE_PID 2>/dev/null; exit" INT TERM
+wait
