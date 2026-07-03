@@ -12,6 +12,7 @@ __pycache__/
 
 # Exclude documentation / plans
 plan/
+CHANGELOG.md
 Gif/
 docs/
 
