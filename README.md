@@ -46,10 +46,12 @@ cp .env.example .env
 ### Run (automated)
 
 ```bash
+# First time only — install deps, migrate, seed data
+./setup.sh
+
+# Any time — start both services
 ./run.sh
 ```
-
-This auto-installs deps, runs migrations, seeds data, creates default accounts, and starts both services.
 
 Open `http://localhost:5173`. Login with `admin1` / `admin`.
 
