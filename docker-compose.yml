@@ -1,18 +1,35 @@
 services:
-  api:
-    build: .
-    command: uv run uvicorn api.routes:app --host 0.0.0.0 --port 8000
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    container_name: dloan-api
     ports:
       - "8000:8000"
     env_file:
       - .env
-
-  ui:
-    build: .
-    command: uv run streamlit run ui/app.py --server.port 8501 --server.address 0.0.0.0
-    ports:
-      - "8501:8501"
     environment:
-      - API_URL=http://api:8000
+      - PYTHONPATH=/app
+      - DJANGO_SETTINGS_MODULE=django_api.config.settings
+    volumes:
+      - db_data:/app/db.sqlite3
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8000/api/applicants/ > /dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: dloan-ui
+    ports:
+      - "5173:80"
     depends_on:
-      - api
+      django:
+        condition: service_healthy
+
+volumes:
+  db_data:

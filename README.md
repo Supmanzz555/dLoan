@@ -31,22 +31,24 @@ Officer screens → AI completes → Officer submits feedback → status = pendi
 ### Prerequisites
 
 - Python 3.12+ with [uv](https://docs.astral.sh/uv/)
-- Node.js 20+
+- Node.js 20+ (for non-Docker)
+- Docker + Docker Compose (for Docker)
 - A [Groq](https://console.groq.com) API key (free)
 
-### Setup
+### Run with Docker
 
 ```bash
-git clone -b Django-version git@github.com:Supmanzz555/dLoan.git dLoan
-cd dLoan
 cp .env.example .env
 # Edit .env — set GROQ_API_KEY
+docker compose up --build
 ```
 
-### Run (automated)
+Open `http://localhost:5173`. Login with `admin1` / `admin`.
+
+### Run locally (no Docker)
 
 ```bash
-# First time only — install deps, migrate, seed data
+# First time — install deps, migrate, seed data
 ./setup.sh
 
 # Any time — start both services
@@ -55,7 +57,7 @@ cp .env.example .env
 
 Open `http://localhost:5173`. Login with `admin1` / `admin`.
 
-### Run (manual)
+### Run (manual without scripts)
 
 ```bash
 # 1. Python deps

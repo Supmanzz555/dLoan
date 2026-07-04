@@ -276,6 +276,7 @@ dependencies = [
     { name = "djangorestframework" },
     { name = "fastapi" },
     { name = "groq" },
+    { name = "gunicorn" },
     { name = "langgraph" },
     { name = "pydantic" },
     { name = "pyjwt" },
@@ -301,6 +302,7 @@ requires-dist = [
     { name = "djangorestframework", specifier = ">=3.17.1" },
     { name = "fastapi", specifier = ">=0.115.0" },
     { name = "groq", specifier = ">=0.18.0" },
+    { name = "gunicorn", specifier = ">=26.0.0" },
     { name = "langgraph", specifier = ">=0.3.0" },
     { name = "pydantic", specifier = ">=2.10.0" },
     { name = "pyjwt", specifier = ">=2.13.0" },
@@ -386,6 +388,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/26/84/d99c4894d32ed52bf2763127804343d9323dce22beb61d42aebc7d9c5f4d/groq-1.4.0.tar.gz", hash = "sha256:09b1ed51408c6969a11ef1a4dfe44d42ec975b5f1510e5de3f3dab56e22dffc6", size = 158123, upload-time = "2026-05-28T03:11:47.5Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3a/5b/28cfd8937be95c0814fd9458710a8a257fb8424a39e291b7bbd494476108/groq-1.4.0-py3-none-any.whl", hash = "sha256:99a3bcd57c71538f69cf11c75cdae91598983d2681b9a14008636a018c4b6d17", size = 143699, upload-time = "2026-05-28T03:11:46.23Z" },
+]
+
+[[package]]
+name = "gunicorn"
+version = "26.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6d/b7/a4a3f632f823e432ce6bc65f62961b7980c898c77f075a2f7118cb3846fe/gunicorn-26.0.0.tar.gz", hash = "sha256:ca9346f85e3a4aeeb64d491045c16b9a35647abd37ea15efe53080eb8b090baf", size = 727286, upload-time = "2026-05-05T06:38:25.529Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e6/40/9c2384fc2be4ad25dd4a49decd5ad9ea5a3639814c11bd40ab77cb9f0a14/gunicorn-26.0.0-py3-none-any.whl", hash = "sha256:40233d26a5f0d1872916188c276e21641155111c2853f0c2cd55260aec0d24fc", size = 212009, upload-time = "2026-05-05T06:38:23.007Z" },
 ]
 
 [[package]]

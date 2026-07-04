@@ -1,0 +1,33 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN pip install uv --quiet && apt-get update -qq && apt-get install -y -qq curl && rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml uv.lock ./
+RUN uv sync --no-dev --quiet
+
+COPY . .
+
+ENV PYTHONPATH=/app
+ENV DJANGO_SETTINGS_MODULE=django_api.config.settings
+
+RUN adduser --disabled-password --no-create-home appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+EXPOSE 8000
+
+CMD uv run python manage.py migrate --run-syncdb 2>/dev/null || uv run python manage.py migrate; \
+    uv run python manage.py seed_data 2>/dev/null || true; \
+    uv run python manage.py shell -c "
+from django.contrib.auth import get_user_model
+User = get_user_model()
+if not User.objects.filter(username='admin1').exists():
+    u = User.objects.create_superuser('admin1', 'admin1@dloan.local', 'admin')
+    u.role = 'admin'; u.is_super_admin = True; u.save()
+if not User.objects.filter(username='admin').exists():
+    u = User.objects.create_superuser('admin', 'admin@dloan.local', 'admin123')
+    u.role = 'admin'; u.save()
+" && \
+    uv run gunicorn django_api.config.wsgi:application --bind 0.0.0.0:8000 --workers 4 --timeout 120
