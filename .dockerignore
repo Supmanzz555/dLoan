@@ -1,7 +1,5 @@
 .venv/
-.venv
 .git/
-.git
 __pycache__/
 *.pyc
 .env
@@ -9,3 +7,6 @@ __pycache__/
 .uv/
 *.egg-info/
 dist/
+node_modules/
+CHANGELOG.md
+plan/
